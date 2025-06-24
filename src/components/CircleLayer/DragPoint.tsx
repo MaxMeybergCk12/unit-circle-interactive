@@ -3,9 +3,7 @@ import { GRID, SHADOW } from "../../constraints";
 
 // Calculate angle from origin to (x, y)
 function getAngle(origin: number, x: number, y: number) {
-  const dx = x - origin;
-  const dy = origin - y; // SVG y is down
-  let angle = Math.atan2(dy, dx);
+  let angle = Math.atan2(origin - y, x - origin);
   if (angle < 0) angle += 2 * Math.PI;
   return angle;
 }
@@ -35,6 +33,22 @@ function TracePath(origin: number, radius: number, endAngle: number) {
   ].join(" ");
 }
 
+function HighlightSector(origin: number, radius: number, endAngle: number) {
+  if (endAngle === 0) return "";
+  const start = { x: origin + radius, y: origin };
+  const end = {
+    x: origin + radius * Math.cos(endAngle),
+    y: origin - radius * Math.sin(endAngle),
+  };
+  const largeArc = endAngle > Math.PI ? 1 : 0;
+  return [
+    `M ${origin} ${origin}`,
+    `L ${start.x} ${start.y}`,
+    `A ${radius} ${radius} 0 ${largeArc} 0 ${end.x} ${end.y}`,
+    "Z",
+  ].join(" ");
+}
+
 export function DragPoint() {
   const size = GRID.size;
   const origin = size / 2;
@@ -61,7 +75,7 @@ export function DragPoint() {
       if (newAngle > maxAngle) {
         setMaxAngle(newAngle);
       }
-      newAngle = clampAngle(newAngle, 0, Math.max(maxAngle, newAngle));
+      newAngle = Math.max(0, Math.min(newAngle, Math.max(maxAngle, newAngle)));
       setAngle(newAngle);
     }
 
@@ -81,6 +95,15 @@ export function DragPoint() {
 
   return (
     <>
+      {/* Orange highlight trail */}
+      {angle > 0 && (
+        <path
+          d={HighlightSector(origin, radius * 0.4, angle)}
+          fill="orange"
+          opacity={0.4}
+          stroke="none"
+        />
+      )}
       {/* Blue trace trail */}
       {angle > 0 && (
         <path
