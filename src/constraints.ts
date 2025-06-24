@@ -1,5 +1,5 @@
 //Grid1.tsx
-export const GRID_CONFIG = {
+export const GRID = {
     size: 500,
     axisColor: "black",
     axisWidth: 3,
@@ -9,7 +9,7 @@ export const GRID_CONFIG = {
 };
 
 // Shadow.tsx
-export const SHADOW_CONFIG = {
+export const SHADOW = {
     ratio: 0.7,           // Ratio of shadow radius to grid size
     color: "blue",        // Shadow outline color
     strokeWidth: 3,       // Outline thickness

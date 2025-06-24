@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid1, Shadow } from './components/CircleLayer';
+import { Grid1, Shadow, DragPoint} from './components/CircleLayer';
 
 
 function App() {
@@ -9,6 +9,9 @@ function App() {
             <Shadow>
                 
             </Shadow>
+            <DragPoint>
+
+            </DragPoint>
         </Grid1>
        
     </div>)

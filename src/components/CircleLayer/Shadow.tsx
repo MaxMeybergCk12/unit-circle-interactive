@@ -1,5 +1,5 @@
 import React from "react";
-import { GRID_CONFIG, SHADOW_CONFIG } from "../../constraints";
+import { GRID, SHADOW } from "../../constraints";
 
 // A dotted gray light brush circle, always active
 interface ShadowProps {
@@ -11,11 +11,11 @@ interface ShadowProps {
 }
   
 export function Shadow({
-    size = GRID_CONFIG.size,
-    ratio = SHADOW_CONFIG.ratio,
-    color = SHADOW_CONFIG.color,
-    strokeWidth = SHADOW_CONFIG.strokeWidth,
-    opacity = SHADOW_CONFIG.opacity,
+    size = GRID.size,
+    ratio = SHADOW.ratio,
+    color = SHADOW.color,
+    strokeWidth = SHADOW.strokeWidth,
+    opacity = SHADOW.opacity,
   }: ShadowProps) {
     const center = size / 2;
     const radius = (size / 2) * ratio;

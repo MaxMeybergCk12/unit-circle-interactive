@@ -1,16 +1,16 @@
 import React from "react";
 import type { ReactNode } from "react";
-import { GRID_CONFIG } from "../../constraints";
+import { GRID } from "../../constraints";
 
-type AxisProps = Partial<typeof GRID_CONFIG> & { children?: ReactNode };
+type AxisProps = Partial<typeof GRID> & { children?: ReactNode };
 
 export function Grid1({
-  size = GRID_CONFIG.size,
-  axisColor = GRID_CONFIG.axisColor,
-  axisWidth = GRID_CONFIG.axisWidth,
-  centerPointColor = GRID_CONFIG.centerPointColor,
-  centerPointRadius = GRID_CONFIG.centerPointRadius,
-  borderColor = GRID_CONFIG.borderColor,
+  size = GRID.size,
+  axisColor = GRID.axisColor,
+  axisWidth = GRID.axisWidth,
+  centerPointColor = GRID.centerPointColor,
+  centerPointRadius = GRID.centerPointRadius,
+  borderColor = GRID.borderColor,
   children
 }: AxisProps) {
   const center = size / 2;
