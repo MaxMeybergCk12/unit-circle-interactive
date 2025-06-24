@@ -123,6 +123,24 @@ export function DragPoint() {
         strokeWidth={2}
         opacity={0.15}
       />
+      {/* Traceline for radius*/}
+      <line
+        x1={origin}
+        y1={origin}
+        x2={x}
+        y2={y}
+        stroke="purple"
+        strokeWidth={3}
+      />
+      {/* Traceline for x-axis */}
+      <line
+        x1={x}
+        y1={origin}
+        x2={x}
+        y2={y}
+        stroke="purple"
+        strokeWidth={3}
+      />
       {/* Draggable point */}
       <circle
         cx={x}
