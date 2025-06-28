@@ -26,7 +26,25 @@ export function NumberLine({ width, height, tickSpacing, y, labels }: NumberLine
       {/* Optional: labels */}
       {labels &&
         labels.map((label, i) => (
-          <text key={i} x={i * tickSpacing} y={y + 20} fontSize={12} textAnchor="middle">
+          <text
+            key={i}
+            x={
+              i === 0
+                ? 10 // shift "0" right
+                : i === labels.length - 1
+                ? width - 10 // shift "2π" left
+                : i * tickSpacing
+            }
+            y={y + 20}
+            fontSize={12}
+            textAnchor={
+              i === 0
+                ? "start"
+                : i === labels.length - 1
+                ? "end"
+                : "middle"
+            }
+          >
             {label}
           </text>
         ))}

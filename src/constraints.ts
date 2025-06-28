@@ -1,6 +1,6 @@
 //Grid1.tsx
 export const GRID = {
-    size: 720,
+    size: 500,
     axisColor: "black",
     axisWidth: 3,
     centerPointColor: "red",
@@ -18,14 +18,14 @@ export const SHADOW = {
 
 // Sine wave box
 export const SINWAVE = {
-    height: 150,
+    height: 200,
     color: "gray",
     width: 500,
     border: "2px solid #888",
 }
 
 export const COSWAVE = {
-    height: 150,
+    height: 200,
     color: "gray",
     width: 500,
     border: "2px solid #888",

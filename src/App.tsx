@@ -24,7 +24,7 @@ export default function App() {
             {/* TODO: Finish the Interractive */}
             {/*MORE */}
             
-            θ: <span style={{ color: "black" }}>{degrees.toFixed(0)}°</span><br />
+            θ: <span style={{ color: "orange" }}>{degrees.toFixed(0)}°</span><br />
             sin(θ): <span style={{ color: "blue" }}>{sin.toFixed(2)}</span><br />
             
             
@@ -34,7 +34,7 @@ export default function App() {
 
             <CosWave angle={angle} />
 
-            *TODOs: <br />
+            <br />
             <br />
             <br />
             <br />
