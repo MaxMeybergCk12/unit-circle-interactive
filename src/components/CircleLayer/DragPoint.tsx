@@ -97,6 +97,9 @@ export function DragPoint({ angle, setAngle }: DragPointProps) {
   const x = origin + radius * Math.cos(angle);
   const y = origin - radius * Math.sin(angle);
 
+  const mathX = Math.cos(angle);
+  const mathY = Math.sin(angle);
+
   return (
     <>
       {/* Orange highlight trail */}
@@ -151,10 +154,35 @@ export function DragPoint({ angle, setAngle }: DragPointProps) {
         r={pointRadius}
         fill="red"
         stroke="black"
-        strokeWidth={2}
+        strokeWidth={4}
         style={{ cursor: "pointer" }}
         onMouseDown={handleMouseDown}
       />
+      {/* Highlight behind coordinate label */}
+      <rect
+        x={x + 15}
+        y={y - 28}
+        width={100}
+        height={35}
+        rx={8}
+        fill="lightgray"
+        opacity={0.5}
+      />
+      <text
+        x={x + 18}
+        y={y - 10}
+        fontSize={18}
+        fill="black"
+        stroke="white"
+        strokeWidth={0.5}
+        paintOrder="stroke"
+      >
+        (
+        <tspan fill="red">{mathX.toFixed(2)}</tspan>
+        ,{" "}
+        <tspan fill="blue">{mathY.toFixed(2)}</tspan>
+        )
+      </text>
     </>
   );
 }

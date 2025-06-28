@@ -38,7 +38,7 @@ export function SinWave({ angle }: SinWaveProps) {
       {/* Sine wave, moving dot, vertical line */}
       <path d={pathData} fill="none" stroke={color} strokeWidth={2} />
       <circle cx={x} cy={y} r={7} fill="red" stroke="black" strokeWidth={2} />
-      <line x1={x} y1={0} x2={x} y2={height} stroke="red" strokeDasharray="4" />
+      <line x1={x} y1={0} x2={x} y2={height} stroke="black" strokeDasharray="4" />
     </GraphSkeleton>
   );
 }

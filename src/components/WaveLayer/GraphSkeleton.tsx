@@ -24,7 +24,7 @@ export function GraphSkeleton({
 }: GraphSkeletonProps) {
   return (
     <div style={{ width, height, border }}>
-      <svg width={width} height={height} style={{ display: "block", background: "#fff" }}>
+      <svg width={width} height={height} style={{ display: "block", background: "white" }}>
         {/* Number line and axis */}
         <NumberLine
           width={width}
@@ -38,8 +38,8 @@ export function GraphSkeleton({
           y1={midY}
           x2={width}
           y2={midY}
-          stroke="#888"
-          strokeWidth={1}
+          stroke="black"
+          strokeWidth={2}
         />
         {/* Graph-specific content */}
         {children}
