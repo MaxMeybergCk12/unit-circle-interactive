@@ -19,14 +19,14 @@ export const SHADOW = {
 // Sine wave box
 export const SINWAVE = {
     height: 150,
-    color: "blue",
+    color: "gray",
     width: 500,
     border: "2px solid #888",
 }
 
 export const COSWAVE = {
-    heght: 150,
-    color: "red",
+    height: 150,
+    color: "gray",
     width: 500,
     border: "2px solid #888",
 }

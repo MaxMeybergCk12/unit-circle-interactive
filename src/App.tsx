@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Grid1, Shadow, DragPoint} from './components/CircleLayer';
 import { getAngle } from './utils/angleMath'
-import { SinWave } from './components/WaveLayer/SinWave';
+import { SinWave, CosWave } from './components/WaveLayer';
+
 
 
 
@@ -22,14 +23,16 @@ export default function App() {
             {/* TEMPORARY VALUES */ }
             {/* TODO: Finish the Interractive */}
             {/*MORE */}
-            *Temporary Values<br />
+            
             θ: <span style={{ color: "black" }}>{degrees.toFixed(0)}°</span><br />
             sin(θ): <span style={{ color: "blue" }}>{sin.toFixed(2)}</span><br />
             
             
-            <SinWave angle={angle} /> {/*TODO: Border the box + Add in grid values*/ }
+            <SinWave angle={angle} />
 
             cos(θ): <span style={{ color: "red" }}>{cos.toFixed(2)}</span><br />
+
+            <CosWave angle={angle} />
 
             *TODOs: <br />
             <br />

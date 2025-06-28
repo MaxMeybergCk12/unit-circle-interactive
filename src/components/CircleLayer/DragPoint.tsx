@@ -152,7 +152,7 @@ export function DragPoint({ angle, setAngle }: DragPointProps) {
         cx={x}
         cy={y}
         r={pointRadius}
-        fill="red"
+        fill="green"
         stroke="black"
         strokeWidth={4}
         style={{ cursor: "pointer" }}
@@ -176,6 +176,7 @@ export function DragPoint({ angle, setAngle }: DragPointProps) {
         stroke="white"
         strokeWidth={0.5}
         paintOrder="stroke"
+        style={{ userSelect: "none" }}
       >
         (
         <tspan fill="red">{mathX.toFixed(2)}</tspan>

@@ -12,6 +12,9 @@ interface GraphSkeletonProps {
     labels: string[];
   };
   children: React.ReactNode;
+  traceX?: number;
+  traceY?: number;
+  strokeColor?: string;
 }
 
 export function GraphSkeleton({
@@ -21,6 +24,9 @@ export function GraphSkeleton({
   midY,
   numberLineProps,
   children,
+  traceX,
+  traceY,
+  strokeColor,
 }: GraphSkeletonProps) {
   return (
     <div style={{ width, height, border }}>
@@ -42,6 +48,16 @@ export function GraphSkeleton({
           strokeWidth={2}
         />
         {/* Graph-specific content */}
+        {typeof traceX === "number" && typeof traceY === "number" && (
+          <line
+            x1={traceX}
+            y1={midY}
+            x2={traceX}
+            y2={traceY}
+            stroke={ strokeColor || "pink"}
+            strokeWidth={3}
+          />
+        )}
         {children}
       </svg>
     </div>
