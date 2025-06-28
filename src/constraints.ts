@@ -1,17 +1,32 @@
 //Grid1.tsx
 export const GRID = {
-    size: 500,
+    size: 720,
     axisColor: "black",
     axisWidth: 3,
     centerPointColor: "red",
-    centerPointRadius: 5,
+    centerPointRadius: 2,
     borderColor: "black",
 };
 
 // Shadow.tsx
 export const SHADOW = {
     ratio: 0.7,           // Ratio of shadow radius to grid size
-    color: "blue",        // Shadow outline color
+    color: "black",        // Shadow outline color
     strokeWidth: 3,       // Outline thickness
     opacity: 0.15,        // Outline opacity
 };
+
+// Sine wave box
+export const SINWAVE = {
+    height: 150,
+    color: "blue",
+    width: 500,
+    border: "2px solid #888",
+}
+
+export const COSWAVE = {
+    heght: 150,
+    color: "red",
+    width: 500,
+    border: "2px solid #888",
+}

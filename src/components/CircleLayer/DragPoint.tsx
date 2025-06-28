@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { GRID, SHADOW } from "../../constraints";
 
+interface DragPointProps {
+  angle: number;
+  setAngle: (a: number) => void;
+}
+
 // Calculate angle from origin to (x, y)
 function getAngle(origin: number, x: number, y: number) {
   let angle = Math.atan2(origin - y, x - origin);
@@ -49,14 +54,13 @@ function HighlightSector(origin: number, radius: number, endAngle: number) {
   ].join(" ");
 }
 
-export function DragPoint() {
+export function DragPoint({ angle, setAngle }: DragPointProps) {
   const size = GRID.size;
   const origin = size / 2;
   const radius = (size / 2) * SHADOW.ratio;
   const pointRadius = 10;
 
   // State: current angle and furthest angle reached
-  const [angle, setAngle] = useState(0);
   const [maxAngle, setMaxAngle] = useState(0);
   const [dragging, setDragging] = useState(false);
 
@@ -104,25 +108,15 @@ export function DragPoint() {
           stroke="none"
         />
       )}
-      {/* Blue trace trail */}
+      {/*  Outer trace trail */}
       {angle > 0 && (
         <path
           d={TracePath(origin, radius, angle)}
           fill="none"
-          stroke="blue"
+          stroke="black"
           strokeWidth={6}
         />
       )}
-      {/* Shadow circle (for reference) */}
-      <circle
-        cx={origin}
-        cy={origin}
-        r={radius}
-        fill="none"
-        stroke="blue"
-        strokeWidth={2}
-        opacity={0.15}
-      />
       {/* Traceline for radius*/}
       <line
         x1={origin}
@@ -138,7 +132,16 @@ export function DragPoint() {
         y1={origin}
         x2={x}
         y2={y}
-        stroke="purple"
+        stroke="blue"
+        strokeWidth={3}
+      />
+      {/* Traceline for y-axis*/}
+      <line
+        x1={origin}
+        y1={origin}
+        x2={x}
+        y2={origin}
+        stroke="red"
         strokeWidth={3}
       />
       {/* Draggable point */}
