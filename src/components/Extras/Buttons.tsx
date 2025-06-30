@@ -2,28 +2,33 @@
 import React from "react";
 import "./buttons.css";
 
-interface ButtonsProps {
-  selectedGraph: "sin" | "cos";
-  setSelectedGraph: (graph: "sin" | "cos") => void;
+export function SinButton({ selected, onClick }: { selected: boolean, onClick: () => void }) {
+  return (
+    <button
+      className={`toggle-sin-btn${selected ? " selected" : ""}`}
+      onClick={onClick}
+    >
+      Sin
+    </button>
+  );
 }
 
-export default function Buttons({ selectedGraph, setSelectedGraph }: ButtonsProps) {
+export function CosButton({ selected, onClick }: { selected: boolean, onClick: () => void }) {
+  return (
+    <button
+      className={`toggle-cos-btn${selected ? " selected" : ""}`}
+      onClick={onClick}
+    >
+      Cos
+    </button>
+  );
+}
+
+export default function Buttons({ selectedGraph, setSelectedGraph }) {
   return (
     <div className="toggle-buttons">
-
-      <button
-        className={`toggle-btn${selectedGraph === "cos" ? " selected" : ""}`}
-        onClick={() => setSelectedGraph("cos")}
-      >
-        Cos
-      </button>
-
-      <button
-        className={`toggle-btn${selectedGraph === "sin" ? " selected" : ""}`}
-        onClick={() => setSelectedGraph("sin")}
-      >
-        Sin
-      </button>
+      <CosButton selected={selectedGraph === "cos"} onClick={() => setSelectedGraph("cos")} />
+      <SinButton selected={selectedGraph === "sin"} onClick={() => setSelectedGraph("sin")} />
     </div>
   );
 }

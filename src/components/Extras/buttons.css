@@ -5,11 +5,11 @@
   gap: 16px;
 }
 
-.toggle-btn {
+.toggle-cos-btn {
   border: 2px solid black;
   border-radius: 16px;
   background: #f5f6f7;
-  color: green;
+  color: red;
   font-weight: bold;
   font-size: 2rem;
   padding: 12px 32px;
@@ -20,7 +20,27 @@
   text-align: center;
 }
 
-.toggle-btn.selected {
-  background: #e0fbe0;
-  border: 3px solid #1a7f37;
+.toggle-sin-btn {
+    border: 2px solid black;
+    border-radius: 16px;
+    background: #f5f6f7;
+    color: blue;
+    font-weight: bold;
+    font-size: 2rem;
+    padding: 12px 32px;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.2s, border 0.2s;
+    width: 120px;
+    text-align: center;
+  }
+
+.toggle-cos-btn.selected {
+  background: #fbe0e0;
+  border: 3px solid red;
+}
+
+.toggle-sin-btn.selected {
+  background: #e0e8fb;
+  border: 3px solid blue;
 }
