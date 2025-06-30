@@ -105,7 +105,7 @@ export function DragPoint({ angle, setAngle }: DragPointProps) {
       {/* Orange highlight trail */}
       {angle > 0 && (
         <path
-          d={HighlightSector(origin, radius * 0.4, angle)}
+          d={HighlightSector(origin, radius * 0.2, angle)}
           fill="orange"
           opacity={0.4}
           stroke="none"
