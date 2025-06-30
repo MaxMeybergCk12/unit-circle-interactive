@@ -2,21 +2,29 @@ import React, { useState } from "react";
 import { Grid1, Shadow, DragPoint} from './components/CircleLayer';
 import { getAngle } from './utils/angleMath'
 import { SinWave, CosWave } from './components/WaveLayer';
+import Buttons from "./components/Extras/Buttons";
 
+//import Buttons from './extras/Buttons';
 
 
 
 export default function App() {
     const [angle, setAngle] = useState(0);
     const { degrees, cos, sin } = getAngle(angle);
+    const [selectedGraph, setSelectedGraph] = useState<"sin" | "cos">("sin");
 
     return (
+        
     <div>
+        
         {/* Part 1: Display unit circle */}
-        <Grid1>
-            <Shadow></Shadow> {/* outline shader, delete to see what happens */}
-            <DragPoint angle={angle} setAngle={setAngle} /> {/* very important, delete to see what happens */}
-        </Grid1>
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 32 }}>
+            <Grid1>
+                <Shadow></Shadow> {/* outline shader, delete to see what happens */}
+                <DragPoint angle={angle} setAngle={setAngle} /> {/* very important, delete to see what happens */}
+            </Grid1>
+            <Buttons selectedGraph={selectedGraph} setSelectedGraph={setSelectedGraph} />
+        </div>
 
         <div>
             {/* Part 2: Sin & Cos Waves*/}
@@ -25,14 +33,7 @@ export default function App() {
             {/*MORE */}
             
             θ: <span style={{ color: "orange" }}>{degrees.toFixed(0)}°</span><br />
-            sin(θ): <span style={{ color: "blue" }}>{sin.toFixed(2)}</span><br />
             
-            
-            <SinWave angle={angle} />
-
-            cos(θ): <span style={{ color: "red" }}>{cos.toFixed(2)}</span><br />
-
-            <CosWave angle={angle} />
 
             <br />
             <br />
@@ -40,9 +41,20 @@ export default function App() {
             <br />
         </div>
 
-        {/*Wanted to add colors to keep focus*/}
-        {/*Less words, more interaftives */}
+        {/* Works on cases of the Sin vs Cos graphs*/}
+        {selectedGraph === "sin" && <div> 
 
+            {/* This is the sin text & SinGraph itself*/}
+            sin(θ): <span style={{ color: "blue" }}>{sin.toFixed(2)}</span><br />
+            <SinWave angle={angle} />
+            </div>
+        }
+        {selectedGraph === "cos" && <div>
+            cos(θ): <span style={{ color: "red" }}>{cos.toFixed(2)}</span><br />
+
+            <CosWave angle={angle} />
+            </div>
+        }
 
     </div>)
 }
