@@ -23,12 +23,3 @@ export function CosButton({ selected, onClick }: { selected: boolean, onClick: (
     </button>
   );
 }
-
-export default function Buttons({ selectedGraph, setSelectedGraph }) {
-  return (
-    <div className="toggle-buttons">
-      <CosButton selected={selectedGraph === "cos"} onClick={() => setSelectedGraph("cos")} />
-      <SinButton selected={selectedGraph === "sin"} onClick={() => setSelectedGraph("sin")} />
-    </div>
-  );
-}
