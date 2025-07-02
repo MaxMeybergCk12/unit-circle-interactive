@@ -1,5 +1,6 @@
 import { SINWAVE } from "../../constraints";
 import { GraphSkeleton } from "./GraphSkeleton";
+import TracePath from "./TracePath";
 
 interface SinWaveProps {
   // Props is short for properties
@@ -37,10 +38,15 @@ export function SinWave({ angle }: SinWaveProps) {
       traceY={y}
       strokeColor="blue"
     >
-      {/* Sine wave, moving dot, vertical line */}
-      <path d={pathData} fill="none" stroke={color} strokeWidth={2} />
-      <circle cx={x} cy={y} r={7} fill="green" stroke="black" strokeWidth={1} />
-      <line x1={x} y1={0} x2={x} y2={height} stroke="black" strokeDasharray="4" />
+      <TracePath
+        width={width}
+        height={height}
+        amp={amp}
+        angle={angle}
+        waveType="sin"
+        trailColor="black"
+        faintColor="#bbb"
+      />
     </GraphSkeleton>
   );
 }
