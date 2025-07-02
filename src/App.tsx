@@ -10,18 +10,24 @@ import { SinButton, CosButton } from "./components/Extras/Buttons";
 export default function App() {
     const [angle, setAngle] = useState(0);
     const { degrees, cos, sin } = getAngle(angle);
-    const [selectedGraph, setSelectedGraph] = useState<"sin" | "cos">("sin");
+    const [mode, setMode] = useState<"sin" | "cos">("sin");
+
+    function handleModeChange(mode: "sin" | "cos") {
+        setMode(mode);
+        setAngle(0); // Reset trail
+    }
 
     return (
         <div className="main-container">
-            <div className="toggle-buttons">
-                <CosButton selected={selectedGraph === "cos"} onClick={() => setSelectedGraph("cos")} />
-                <SinButton selected={selectedGraph === "sin"} onClick={() => setSelectedGraph("sin")} />
+            <div className="wave-container">
+                <SinButton selected={mode === "sin"} onClick={() => handleModeChange("sin")} />
+                <CosButton selected={mode === "cos"} onClick={() => handleModeChange("cos")} />
             </div>
-            <Grid1> {/*TODO: Add 1, -1 to the unit circle*/ }
+            <Grid1> 
                 {/*TODO: Add in the theta inside the angle */ }
                 {/*TODO: Add right angle for 90 degrees*/ }
-                {/*TODO: Trail the sin wave */ }
+                {/*TODO: Trailing the tan wave */ }
+                
                 <Shadow></Shadow> {/* outline shader, delete to see what happens */}
                 <DragPoint angle={angle} setAngle={setAngle} /> {/* very important, delete to see what happens */}
             </Grid1>
@@ -41,19 +47,17 @@ export default function App() {
             </div>
 
             {/* Works on cases of the Sin vs Cos graphs*/}
-            {selectedGraph === "sin" && <div> 
-
-                {/* This is the sin text & SinGraph itself*/}
-                sin(θ): <span style={{ color: "blue" }}>{sin.toFixed(2)}</span><br />
-                <SinWave angle={angle} />
-                </div>
-            }
-            {selectedGraph === "cos" && <div>
-                cos(θ): <span style={{ color: "red" }}>{cos.toFixed(2)}</span><br />
-
-                <CosWave angle={angle} />
-                </div>
-            }
+            {mode === "sin" ? (
+                <>
+                    <div>sin(θ): <span style={{ color: "blue" }}>{sin.toFixed(2)}</span></div>
+                    <SinWave angle={angle} />
+                </>
+            ) : (
+                <>
+                    <div>cos(θ): <span style={{ color: "red" }}>{cos.toFixed(2)}</span></div>
+                    <CosWave angle={angle} />
+                </>
+            )}
         </div>
     )
 }

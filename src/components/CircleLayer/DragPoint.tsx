@@ -199,6 +199,29 @@ export function DragPoint({ angle, setAngle }: DragPointProps) {
         <tspan fill="blue">{mathY.toFixed(2)}</tspan>
         )
       </text>
+      <defs>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <text
+        x={origin + 210 }
+        y={origin - 220}
+        fill="orange"
+        stroke="gray"
+        strokeWidth={2}
+        fontSize={radius * 0.20}
+        textAnchor="middle"
+        alignmentBaseline="middle"
+        fontWeight="bold"
+        filter="url(#glow)"
+      >
+        {(angle * 180 / Math.PI).toFixed(0)}°
+      </text>
     </>
   );
 }
