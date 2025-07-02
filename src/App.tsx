@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Grid1, Shadow, DragPoint} from './components/CircleLayer';
 import { getAngle } from './utils/angleMath'
 import { SinWave, CosWave } from './components/WaveLayer';
-import Buttons from "./components/Extras/Buttons";
+import { SinButton, CosButton } from "./components/Extras/Buttons";
 
 //import Buttons from './extras/Buttons';
-
 
 
 export default function App() {
@@ -23,7 +22,10 @@ export default function App() {
                 <Shadow></Shadow> {/* outline shader, delete to see what happens */}
                 <DragPoint angle={angle} setAngle={setAngle} /> {/* very important, delete to see what happens */}
             </Grid1>
-            <Buttons selectedGraph={selectedGraph} setSelectedGraph={setSelectedGraph} />
+            <div>
+                <CosButton selected={selectedGraph === "cos"} onClick={() => setSelectedGraph("cos")} />
+                <SinButton selected={selectedGraph === "sin"} onClick={() => setSelectedGraph("sin")} />
+            </div>
         </div>
 
         <div>
