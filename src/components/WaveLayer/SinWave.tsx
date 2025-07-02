@@ -8,7 +8,7 @@ interface SinWaveProps {
 }
 
 export function SinWave({ angle }: SinWaveProps) {
-  const { width, height, color, border } = SINWAVE;
+  const { width, height, border } = SINWAVE;
   const midY = height / 2;
   const amp = (height / 2) * 0.8;
   const labels = ["0", "π/2", "π", "3π/2", "2π"];
@@ -22,7 +22,6 @@ export function SinWave({ angle }: SinWaveProps) {
     points.push(`${x},${y}`);
   }
   // voodooo magic for getting SVGs to listen
-  const pathData = `M${points.join(" L")}`;
 
   const x = (angle / (2 * Math.PI)) * width;
   const y = midY - Math.sin(angle) * amp;
