@@ -62,11 +62,9 @@ export function DragPoint({ angle, setAngle }: DragPointProps) {
 
   // State: current angle and furthest angle reached
   const [maxAngle, setMaxAngle] = useState(0);
-  const [, setDragging] = useState(false);
 
   // Drag logic
   function handleMouseDown(e: React.MouseEvent<SVGCircleElement, MouseEvent>) {
-    setDragging(true);
     const svg = (e.target as SVGCircleElement).ownerSVGElement!;
     const rect = svg.getBoundingClientRect();
 
@@ -74,29 +72,45 @@ export function DragPoint({ angle, setAngle }: DragPointProps) {
       const mx = ev.clientX - rect.left;
       const my = ev.clientY - rect.top;
       let newAngle = getAngle(origin, mx, my);
-
-      // Only allow the dot to move between 0 and maxAngle
-      if (newAngle > maxAngle) {
-        setMaxAngle(newAngle);
-      }
+      if (newAngle > maxAngle) setMaxAngle(newAngle);
       newAngle = Math.max(0, Math.min(newAngle, Math.max(maxAngle, newAngle)));
       setAngle(newAngle);
     }
-
     function up() {
-      setDragging(false);
       window.removeEventListener("mousemove", move);
       window.removeEventListener("mouseup", up);
     }
-
     window.addEventListener("mousemove", move);
     window.addEventListener("mouseup", up);
+  }
+
+  // Touch logic for mobile
+  function handleTouchStart(e: React.TouchEvent<SVGCircleElement>) {
+    e.preventDefault();
+    const svg = (e.target as SVGCircleElement).ownerSVGElement!;
+    const rect = svg.getBoundingClientRect();
+
+    function move(ev: TouchEvent) {
+      ev.preventDefault();
+      const touch = ev.touches[0];
+      const mx = touch.clientX - rect.left;
+      const my = touch.clientY - rect.top;
+      let newAngle = getAngle(origin, mx, my);
+      if (newAngle > maxAngle) setMaxAngle(newAngle);
+      newAngle = Math.max(0, Math.min(newAngle, Math.max(maxAngle, newAngle)));
+      setAngle(newAngle);
+    }
+    function up() {
+      window.removeEventListener("touchmove", move);
+      window.removeEventListener("touchend", up);
+    }
+    window.addEventListener("touchmove", move, { passive: false });
+    window.addEventListener("touchend", up);
   }
 
   // Point position
   const x = origin + radius * Math.cos(angle);
   const y = origin - radius * Math.sin(angle);
-
   const mathX = Math.cos(angle);
   const mathY = Math.sin(angle);
 
@@ -157,6 +171,7 @@ export function DragPoint({ angle, setAngle }: DragPointProps) {
         strokeWidth={4}
         style={{ cursor: "pointer" }}
         onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
       />
       {/* Highlight behind coordinate label */}
       <rect
