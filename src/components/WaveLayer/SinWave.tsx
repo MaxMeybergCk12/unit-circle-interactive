@@ -1,4 +1,3 @@
-import React from "react";
 import { SINWAVE } from "../../constraints";
 import { GraphSkeleton } from "./GraphSkeleton";
 

@@ -1,5 +1,4 @@
 // src/components/GraphUtils/NumberLine.tsx
-import React from "react";
 
 interface NumberLineProps {
   width: number;
@@ -9,7 +8,7 @@ interface NumberLineProps {
   labels?: string[];
 }
 
-export function NumberLine({ width, height, tickSpacing, y, labels }: NumberLineProps) {
+export function NumberLine({ width, tickSpacing, y, labels }: NumberLineProps) {
   const ticks = [];
   for (let x = 0; x <= width; x += tickSpacing) {
     ticks.push(

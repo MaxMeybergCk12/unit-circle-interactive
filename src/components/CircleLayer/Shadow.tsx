@@ -1,4 +1,3 @@
-import React from "react";
 import { GRID, SHADOW } from "../../constraints";
 
 // A dotted gray light brush circle, always active

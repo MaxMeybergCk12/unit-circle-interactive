@@ -13,12 +13,12 @@ function getAngle(origin: number, x: number, y: number) {
   return angle;
 }
 
-// Clamp angle between min and max
-function clampAngle(angle: number, min: number, max: number) {
-  if (angle < min) return min;
-  if (angle > max) return max;
-  return angle;
-}
+// // Clamp angle between min and max
+// function clampAngle(angle: number, min: number, max: number) {
+//   if (angle < min) return min;
+//   if (angle > max) return max;
+//   return angle;
+// }
 
 // SVG arc path from 0 to endAngle (the blue trail)
 function TracePath(origin: number, radius: number, endAngle: number) {
@@ -62,7 +62,7 @@ export function DragPoint({ angle, setAngle }: DragPointProps) {
 
   // State: current angle and furthest angle reached
   const [maxAngle, setMaxAngle] = useState(0);
-  const [dragging, setDragging] = useState(false);
+  const [, setDragging] = useState(false);
 
   // Drag logic
   function handleMouseDown(e: React.MouseEvent<SVGCircleElement, MouseEvent>) {

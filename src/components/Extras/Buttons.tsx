@@ -1,5 +1,4 @@
 // src/extras/Buttons.tsx
-import React from "react";
 import "./buttons.css";
 
 export function SinButton({ selected, onClick }: { selected: boolean, onClick: () => void }) {

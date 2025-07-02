@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Grid1, Shadow, DragPoint} from './components/CircleLayer';
 import { getAngle } from './utils/angleMath'
 import { SinWave, CosWave } from './components/WaveLayer';
